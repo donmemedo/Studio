@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  chatbot:
+    image: studio:latest
+    network_mode: host
+    deploy:
+      mode: replicated
+      replicas: 1    
+      update_config:
+        parallelism: 1
+        delay: 1s
+        order: start-first
+      restart_policy:
+        condition: any
+        delay: 1s
+        window: 2s
